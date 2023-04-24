@@ -3,7 +3,7 @@ describe('my first test suite', () => {
   it('passes  aaa', () => {
     cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/')
     cy.get("input.search-keyword").type('ca')
-    //> npx cypress open
+    
     cy.get(".product:visible").should('have.length',4)
    // cy.get('.products').find('.product').eq(2).contains('ADD TO CART').click()
 //has 4 products 
@@ -14,7 +14,7 @@ cy.get('.products').as('productsLocator')
      const textveg= $el.find('h4.product-name').text();
      if(textveg.includes('Cashews')){
       cy.wrap($el).find('button').click()
-      //.cart-icon img
+      
 
        cy.get(".cart-icon img").click();
      
@@ -26,7 +26,7 @@ cy.get('.products').as('productsLocator')
 
     })
   })
-it.skip('passes  efg', () => {
+it('test  rahul shetty ecommerce', () => {
     cy.visit('https://rahulshettyacademy.com/client/')
     cy.get('#userEmail').type('christophodibo@yahoo.com')
      cy.get('#userPassword').type('Father70')
@@ -39,7 +39,7 @@ it.skip('passes  efg', () => {
    }
   })   
 })
-it.skip('passes  mno', () => {
+it('passes  mno', () => {
      cy.visit("https://practice.automationtesting.in/")
      cy.url().should('include','automationtesting')
     // cy.get("[class*='themify_builder_sub_row clearfix gutter-default   sub_row_1-0-2']")
@@ -54,9 +54,8 @@ it.skip('passes  mno', () => {
      })
        })
 
-       it.skip('passes  ddd', () => {
-     
-        cy.visit("https://www.automationexercise.com/")
+       it('passes  ddd', () => {
+     cy.visit("https://www.automationexercise.com/")
         cy.url().should('include','automationexercise')
         cy.title().should('eq','Automation Exercise')
         //cy.get("[class='productinfo text-center']").eq(0).contains('Add to cart').click();
@@ -66,6 +65,17 @@ it.skip('passes  mno', () => {
           cy.wrap($el).contains('Add to cart').click({force: true});
          }
          
+        })
+       
+      })
+
+      it('passes vvvvvvv', () => {
+        cy.visit("https://www.demoblaze.com/")
+        cy.get('#tbodyid').find("div[class*='card ']").each(($ele,index,$list)=>{
+      const itemText= $ele.find("h4 a").text()
+      if(itemText.includes('Nokia lumia 1520')){
+        cy.wrap($ele).contains('Nokia lumia 1520').click()
+      }
         })
       })
 })

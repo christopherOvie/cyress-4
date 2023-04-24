@@ -1,4 +1,4 @@
-
+var expected = require("../apiTesting/../../../fixtures/../headers.json");
 //import {add, multiply} from './math.js'
 describe('test Get methods', () => {
     it('check endpoints response', () => {
@@ -25,6 +25,7 @@ it('check endpoints response with properties key/value', () => {
         qs:"results=1",
         }).then((response)=>{
             expect(response.status).to.eq(200)
+            cy.log('response is ',response)
             cy.log("response, " + JSON.stringify(response.body.results[0]))
             assert.isNotNull(response.body.results[0],"gender is not available")
 
@@ -53,6 +54,7 @@ cy.request({
     expect(response.body.data[0]).to.has.property("first_name","Michael")
     expect(response.body.data[0]).to.has.property("last_name","Lawson")
     expect(response.body.data[0]).to.has.property("avatar","https://reqres.in/img/faces/7-image.jpg")
+    
 
     //asserting dynamic data
     assert.isNotNull(response.body.data[0].email,"isNotNull");
@@ -94,14 +96,14 @@ cy.request(Cypress.env("host") + Cypress.env("endpoint_list"))
     cy.log("headers", JSON.stringify(headers));
 })
 
-// cy.request(Cypress.env("host") + Cypress.env("endpoint_list"))
-// .its("headers")
-// .then((actual)=>{  
-//     cy.log("header ",JSON.stringify(actual));
-//     expect(actual).to.include(expected);
+cy.request(Cypress.env("host") + Cypress.env("endpoint_list"))
+.its("headers")
+.then((actual)=>{  
+    cy.log("header ",JSON.stringify(actual));
+    expect(actual).to.include(expected);
 
 
-// })
+})
 
 })
 })
